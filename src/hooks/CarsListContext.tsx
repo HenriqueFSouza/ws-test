@@ -44,7 +44,7 @@ export const Provider = ({ children }: Props) => {
 
       try {
         const response = await api.get('/cars.json');
-        const groupedCars = groupCarsByBrand(response.data);
+        const groupedCars = groupCarsByBrand(response.data.cars);
         setCarsList(groupedCars);
       } catch (error) {
         console.log('error', error);
