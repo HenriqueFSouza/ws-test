@@ -65,6 +65,6 @@ A partir da clonagem do projeto, você deverá executar os seguintes comandos no
 
 Uma nova aba do seus navegador será aberta com o projeto e você poderá personalizar de acordo com o que preferir
 
-### Link para o deploy da aplcação no Heroku: https://ws-test-8ac7e2d8eb7a.herokuapp.com/
+### Link para o deploy da aplcação no Heroku: <a href="https://ws-test-8ac7e2d8eb7a.herokuapp.com/" target="_blank">Clique aqui/</a>
 
 
