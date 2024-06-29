@@ -28,7 +28,6 @@ O tipo `CarsListItem` representa um carro e possui as seguintes propriedades:
 - `modelo_id`: ID do modelo do carro.
 - `ano`: Ano do carro.
 - `combustivel`: Tipo de combustível do carro.
-- `num_portas`: Número de portas do carro.
 - `cor`: Cor do carro.
 - `nome_modelo`: Nome do modelo do carro.
 - `valor`: Valor do carro.
