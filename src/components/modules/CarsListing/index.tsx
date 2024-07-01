@@ -7,7 +7,7 @@ type Props = {
   carsList: Record<number, CarsListItem[]>
 }
 export default function CarsListing({ carsList }: Props) {
-  console.log(Object.entries(carsList))
+
   return (
     <div className="cars-cards-container">
       <div className='cars-cards-wrapper'>
