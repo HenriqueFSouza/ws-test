@@ -9,13 +9,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Defina a porta do servidor
+// Define a porta do servidor
 const PORT = process.env.PORT || 5000;
-
-// Rota para servir o aplicativo React em produção
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
-}
 
 // Rota da API
 app.get('/api/list-cars', async (req, res) => {
@@ -31,13 +26,15 @@ app.get('/api/list-cars', async (req, res) => {
     // Enviando a resposta JSON corretamente
     res.json(parsedData);
   } catch (error) {
-    console.log('error', error)
+    console.error('Error fetching data:', error);
     res.status(500).json({ message: 'Error fetching data', error: error.message });
   }
 });
 
-// Captura todas as outras requisições e retorna o aplicativo React
+// Middleware para servir o aplicativo React em produção
 if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
