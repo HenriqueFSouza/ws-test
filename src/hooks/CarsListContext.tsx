@@ -43,7 +43,7 @@ export const Provider = ({ children }: Props) => {
       }
 
       try {
-        const response = await axios.get('/api/list-cars');
+        const response = await axios.get('/api/list-cars:5000');
         const data = response.data.cars
         const groupedCars = groupCarsByBrand(data);
         setCarsList(groupedCars);
