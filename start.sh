@@ -1,5 +1,3 @@
-#!/bin/sh
-
 # Start the React app
 npm run build
 
