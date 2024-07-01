@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { api } from '../services/api'
 import { CarsListItem } from '../@types'
+import axios from 'axios';
 
 interface CartContextType {
   carsList: Record<number, CarsListItem[]>;
@@ -43,7 +43,7 @@ export const Provider = ({ children }: Props) => {
       }
 
       try {
-        const response = await api.get('/api/list-cars');
+        const response = await axios.get('/api/list-cars');
         const data = response.data.cars
         const groupedCars = groupCarsByBrand(data);
         setCarsList(groupedCars);
