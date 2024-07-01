@@ -15,7 +15,11 @@ const PORT = process.env.PORT || 5000;
 // Rota da API
 app.get('/api/list-cars', async (req, res) => {
   try {
-    const response = await axios.get('https://wswork.com.br/cars_by_brand.json');
+    const response = await axios.get('https://wswork.com.br/cars_by_brand.json', {
+      headers: {
+        'User-Agent': 'CarsList/1.0'
+      }
+    });
     
     // Corrigindo o JSON removendo espaços em branco desnecessários e adicionando a vírgula
     const fixedData = response.data.replace(/(\r\n|\n|\r|\s+)/gm, ' ').replace(/("num_portas"\s*:\s*\d+)/g, '$1,');
