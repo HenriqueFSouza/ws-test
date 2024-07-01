@@ -31,6 +31,7 @@ app.get('/api/list-cars', async (req, res) => {
     // Enviando a resposta JSON corretamente
     res.json(parsedData);
   } catch (error) {
+    console.log('error', error)
     res.status(500).json({ message: 'Error fetching data', error: error.message });
   }
 });
