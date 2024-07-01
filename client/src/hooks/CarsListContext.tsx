@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { CarsListItem } from '../@types'
-import axios from 'axios';
 import { api } from '../services/api';
 
 interface CartContextType {

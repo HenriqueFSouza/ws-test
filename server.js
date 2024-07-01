@@ -1,4 +1,4 @@
-require('dotenv/config')
+require('dotenv/config');
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
@@ -9,18 +9,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Define a porta do servidor
+// Defina a porta do servidor
 const PORT = process.env.PORT || 5000;
 
-// Middleware para servir o aplicativo React em produção
+// Rota para servir o aplicativo React em produção
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
 }
 
+// Rota da API
 app.get('/api/list-cars', async (req, res) => {
   try {
     const response = await axios.get('https://wswork.com.br/cars_by_brand.json');
@@ -37,6 +34,13 @@ app.get('/api/list-cars', async (req, res) => {
     res.status(500).json({ message: 'Error fetching data', error: error.message });
   }
 });
+
+// Captura todas as outras requisições e retorna o aplicativo React
+if (process.env.NODE_ENV === 'production') {
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
